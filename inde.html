@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RECAP</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #fff79e;
+      
+    }
+
+    .container {
+      text-align: center;
+      width: 60%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    /* Hidden sections */
+    .hidden-section {
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 0.6s ease;
+      display: none;
+    }
+
+    /* Slide-in active state */
+    .show {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    ul, .terms {
+      text-align: left;
+      margin: 0 auto 30px auto;
+      width: 70%;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .terms p {
+      margin: 6px 0;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      background: #6a5acd;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background: #5848b8;
+    }
+
+    /* Modal Background */
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+      animation: bgPulse 6s ease-in-out infinite;
+    }
+
+    /* Modal Box */
+    .modal-box {
+      width: 50%;
+      background: #fff79e;
+      padding: 40px;
+      border-radius: 12px;
+      border: 4px solid silver;
+      text-align: center;
+      font-size: 1.8rem;
+      animation: popIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+
+@keyframes bgPulse {
+  0%   { background-color: #fde2e4; }  /* pastel pink */
+  15%  { background-color: #fad2e1; }  /* blush */
+  30%  { background-color: #e2ece9; }  /* mint */
+  45%  { background-color: #bee1e6; }  /* soft aqua */
+  60%  { background-color: #cddafd; }  /* baby blue */
+  75%  { background-color: #d7c9f7; }  /* lavender */
+  90%  { background-color: #f3d1f4; }  /* pastel violet */
+  100% { background-color: #fde2e4; }  /* same as start */
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Let's RECAP!</h1>
+
+    <!-- Three buttons shown on page load -->
+    <button id="btn1" onclick="showRecap()">Click Me</button>
+    <button id="btn2" onclick="showTerms()">Click Me</button>
+    <button id="btn3" onclick="openModal()">Click Me</button>
+
+    <!-- Recap section -->
+    <div id="recap" class="hidden-section">
+      <ul>
+        <li>Clicked New Repository</li>
+        <li>Gave it a name, description, and public visibility</li>
+        <li>Initialized with a README</li>
+        <li>Created the repo and added an HTML file</li>
+        <li>Deployed using GitHub Pages</li>
+      </ul>
+    </div>
+
+    <!-- Definitions section -->
+    <div id="terms" class="hidden-section">
+      <div class="terms">
+        <p><strong>Repository</strong> = Project file</p>
+        <p><strong>README</strong> = Instruction booklet</p>
+        <p><strong>Cloud</strong> = Online storage space</p>
+        <p><strong>Commit</strong> = Snapshot</p>
+        <p><strong>Tech stack</strong> = Toolkit</p>
+        <p><strong>HTML file</strong> = Structure/Blueprint</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-bg" id="modal">
+    <div class="modal-box">
+      THANK YOU HOLLY, BRADY and SETH! 😊
+    </div>
+  </div>
+
+  <script>
+    function showRecap() {
+      document.getElementById("recap").classList.add("show");
+      document.getElementById("btn1").style.display = "none";
+    }
+
+    function showTerms() {
+      document.getElementById("terms").classList.add("show");
+      document.getElementById("btn2").style.display = "none";
+    }
+
+    function openModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    // Close modal when clicking outside the box
+    document.getElementById("modal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        this.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
